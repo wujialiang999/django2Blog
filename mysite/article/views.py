@@ -6,6 +6,8 @@ from .models import Article
 def article_detail(request,article_id):
     try:
         article=Article.objects.get(id=article_id)
+        content={}
+        content["article_obj"]=article
+        return render(request,"article_detail.html",content)
     except Article.DoesNotExist:
         raise Http404("页面不存在!")
-    return HttpResponse("文章id为：{},标题:{},内容:{}".format(article_id,article.title,article.content))
