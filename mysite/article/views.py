@@ -5,4 +5,4 @@ from .models import Article
 
 def article_detail(request,article_id):
     article = Article.objects.get(id=article_id)
-    return HttpResponse("文章id为：{}，标题为{}".format(article.article_id,article.title))
+    return HttpResponse("文章id为：{}，标题为:{},内容为:{}".format(article_id,article.title,article.content))
