@@ -4,5 +4,8 @@ from .models import Article
 # Create your views here.
 
 def article_detail(request,article_id):
-    article = Article.objects.get(id=article_id)
-    return HttpResponse("文章id为：{}，标题为:{},内容为:{}".format(article_id,article.title,article.content))
+    try:
+        article=Article.objects.get(id=article_id)
+    except Article.DoesNotExist:
+        return HttpResponse("页面不存在!")
+    return HttpResponse("文章id为：{},标题:{},内容:{}".format(article_id,article.title,article.content))
