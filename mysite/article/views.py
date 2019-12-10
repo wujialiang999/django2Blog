@@ -8,3 +8,8 @@ def article_detail(request,article_id):
     content={}
     content["article_obj"]=article
     return render(request,"article_detail.html",content)
+def article_list(request):
+    article = Article.objects.all()
+    context={}
+    context["articles"]=article
+    return render(request,"article_list.html",context)
